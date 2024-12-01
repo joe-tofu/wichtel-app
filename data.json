@@ -1,0 +1,16 @@
+{
+  "names": [
+    "Anne",
+    "Daniel",
+    "Andy",
+    "Nadine",
+    "Jörg"
+  ],
+  "pairs": {
+    "Jörg": "Daniel",
+    "Nadine": "Andy",
+    "Andy": "Jörg",
+    "Anne": "Nadine",
+    "Daniel": "Anne"
+  }
+}
