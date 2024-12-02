@@ -11,6 +11,14 @@ const DATA_FILE = "./data.json";
 app.use(express.json());
 app.use(express.static("public"));
 
+// Ausschlussregeln
+const exclusions = {
+	Anne: ["Daniel"],
+	Daniel: ["Anne"],
+	Nadine: ["Jörg"],
+	Jörg: ["Nadine"],
+};
+
 // Hilfsfunktion: Daten lesen und schreiben
 async function getData() {
 	try {
@@ -40,8 +48,12 @@ app.post("/draw", async (req, res) => {
 			.json({ message: "Du hast bereits einen Wichtelpartner." });
 	}
 
+	// Verfügbare Empfänger filtern: keine Selbstauswahl, nicht bereits zugewiesen und keine ausgeschlossenen Paare
 	const availableReceivers = data.names.filter(
-		(n) => n !== name && !Object.values(data.pairs).includes(n)
+		(receiver) =>
+			receiver !== name &&
+			!Object.values(data.pairs).includes(receiver) &&
+			!(exclusions[name] || []).includes(receiver)
 	);
 
 	if (availableReceivers.length === 0) {
@@ -50,6 +62,7 @@ app.post("/draw", async (req, res) => {
 			.json({ message: "Keine Wichtelpartner mehr verfügbar." });
 	}
 
+	// Zufälligen Empfänger auswählen
 	const receiver =
 		availableReceivers[Math.floor(Math.random() * availableReceivers.length)];
 	data.pairs[name] = receiver;
