@@ -1,24 +1,36 @@
 body {
+	background-color: hsl(111, 24%, 20%);
 	font-family: Arial, sans-serif;
 	text-align: center;
 	padding: 20px;
 }
 #app {
+	background-color: #ede3cc;
+	border-radius: 10px;
+	padding: 20px;
 	max-width: 400px;
 	margin: 0 auto;
 }
+.image {
+	border-radius: 999px;
+	max-width: 180px;
+	overflow: hidden;
+}
 input {
-	width: 100%;
+	border: none;
+	border-radius: 5px;
+	max-width: 100%;
 	padding: 10px;
 	margin: 10px 0;
 }
 button {
+	border-radius: 5px;
 	padding: 10px 20px;
-	background-color: #28a745;
+	background-color: #d25466;
 	color: white;
 	border: none;
 	cursor: pointer;
 }
 button:hover {
-	background-color: #218838;
+	background-color: hsl(111, 24%, 20%);
 }
