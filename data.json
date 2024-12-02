@@ -1,12 +1,4 @@
 {
-  "names": [
-    "Anne",
-    "Daniel",
-    "Andy",
-    "Nadine",
-    "Jörg"
-  ],
-  "pairs": {
-    "Jörg": "Anne"
-  }
+	"names": ["Anne", "Daniel", "Andy", "Nadine", "Jörg"],
+	"pairs": {}
 }
