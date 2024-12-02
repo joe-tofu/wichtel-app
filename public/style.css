@@ -15,6 +15,7 @@ body {
 	border-radius: 999px;
 	max-width: 180px;
 	overflow: hidden;
+	margin: 0 auto;
 }
 input {
 	border: none;
@@ -33,4 +34,8 @@ button {
 }
 button:hover {
 	background-color: hsl(111, 24%, 20%);
+}
+#resetButton {
+	display: none;
+	margin: 0 auto;
 }

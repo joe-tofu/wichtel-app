@@ -103,6 +103,29 @@ app.post("/draw", async (req, res) => {
 	});
 });
 
+// Füge diese Route zu deinem bestehenden Server-Code hinzu
+app.post("/reset", async (req, res) => {
+	try {
+		const data = await getData();
+
+		// Lösche alle bestehenden Paare
+		data.pairs = {};
+
+		// Optional: Speichere die Änderung
+		await saveData(data);
+
+		res.json({
+			message: "Wichtelpaare wurden erfolgreich zurückgesetzt.",
+			names: data.names,
+		});
+	} catch (error) {
+		console.error("Fehler beim Zurücksetzen:", error);
+		res
+			.status(500)
+			.json({ message: "Fehler beim Zurücksetzen der Wichtelpaare." });
+	}
+});
+
 // Startserver
 app.listen(PORT, async () => {
 	const data = await getData();

@@ -18,7 +18,36 @@
 			<input type="text" id="name" placeholder="Dein Name" />
 			<button id="draw">Auslosen</button>
 			<p id="result"></p>
+			<button id="resetButton">Wichteln zurücksetzen</button>
 		</div>
+
+		<script>
+			document
+				.getElementById("resetButton")
+				.addEventListener("click", async () => {
+					try {
+						const response = await fetch("/reset", {
+							method: "POST",
+							headers: {
+								"Content-Type": "application/json",
+							},
+						});
+
+						const result = await response.json();
+
+						if (response.ok) {
+							alert(result.message);
+							// Optional: Aktualisiere die Anzeige oder lade Seite neu
+							location.reload();
+						} else {
+							throw new Error(result.message);
+						}
+					} catch (error) {
+						console.error("Reset-Fehler:", error);
+						alert("Fehler beim Zurücksetzen: " + error.message);
+					}
+				});
+		</script>
 		<script src="app.js"></script>
 	</body>
 </html>
